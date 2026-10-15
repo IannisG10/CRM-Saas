@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/*  Design tokens — crm-saas (CRMine)                                  */
+/*  Direction A éditoriale-claire. Voir DESIGN.md (source de vérité).  */
+/*  Canvas crème · Ink · accent prune · radius 4px · sans ombre.       */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Surfaces & neutres chauds (repris d'Intercom, confirmés DOM) */
+  --color-canvas: #faf9f6;
+  --color-surface: #f1eee9;
+  --color-surface-strong: #d3cec6;
+  --color-card: #ffffff;
+  --color-ink: #0a0a0a;
+  --color-ink-2: #242424;
+  --color-ink-3: #3a3a3a;
+  --color-ink-muted: #6b6b6b;
+  --color-border: #dedbd6;
+  --color-logo: #b8b8b8;
+
+  /* Accent de marque (prune) + actions + sémantique */
+  --color-accent: #6b2c5f;
+  --color-accent-strong: #561f4d;
+  --color-accent-soft: #f0e8ef;
+  --color-action: #111111;
+  --color-on-action: #ffffff;
+  --color-action-strong: #000000;
+  --color-success: #1f9d6b;
+  --color-warning: #b45309;
+  --color-danger: #b42318;
+  --color-ring: #6b2c5f;
+
+  /* Typographie */
+  /* Titres / display : Inter (poids 300) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  /* Corps & texte d'accompagnement (lisibilité) : Inter 400 */
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  /* Sous-titres : serif éditoriale (substitut de « Serrif » d'Intercom) */
+  --font-serif: var(--font-source-serif), ui-serif, Georgia, "Times New Roman",
+    serif;
+  /* Labels : IBM Plex Mono */
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+
+  /* Forme : radius 4px universel */
+  --radius-md: 0.25rem;
+
+  /* Marquee logos */
+  --animate-marquee: marquee 38s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes badge-pop {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-badge-pop {
+  animation: badge-pop 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Titres & display en Inter (le corps hérite d'Helvetica via body) */
+h1,
+h2,
+h3 {
+  font-family: var(--font-sans);
+}
+
+/* Label mono : signature éditoriale (à utiliser avec parcimonie) */
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+}
+
+/* Entrée orchestrée du hero (un seul moment, pas sur chaque section) */
+.animate-fade-up {
+  animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Piste marquee : dupliquée pour une boucle sans couture */
+.marquee-track {
+  animation: var(--animate-marquee);
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+
+/* Focus visible cohérent (accessibilité) */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .marquee-track,
+  .animate-badge-pop {
+    animation: none !important;
+  }
+}
