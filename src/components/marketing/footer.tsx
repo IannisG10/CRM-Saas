@@ -31,10 +31,10 @@ const COLUMNS = [
   {
     title: "Légal",
     links: [
-      { href: "#", label: "Confidentialité" },
-      { href: "#", label: "Conditions" },
-      { href: "#", label: "RGPD" },
-      { href: "#", label: "Cookies" },
+      { href: "/confidentialite", label: "Confidentialité" },
+      { href: "/cgv", label: "Conditions" },
+      { href: "/confidentialite", label: "RGPD" },
+      { href: "/confidentialite", label: "Cookies" },
     ],
   },
 ];
@@ -80,7 +80,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-sm text-ink-3 sm:flex-row">
           <p>© {new Date().getFullYear()} CRMine. Tous droits réservés.</p>
-          <p>Conçu en France · Hébergé en Europe</p>
+          <p>Powered by <span className="font-medium text-ink">MAD SRL</span></p>
         </div>
       </div>
     </footer>

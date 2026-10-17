@@ -2,11 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   BarChart3,
+  Building2,
   Check,
-  MessageSquare,
-  MousePointerClick,
-  Target,
-  Upload,
+  CreditCard,
+  GitBranch,
+  Users,
   Workflow,
 } from "lucide-react";
 import { PLANS } from "@/config/plans";
@@ -71,7 +71,7 @@ function Hero() {
           <div className="overflow-hidden rounded-md border border-border bg-surface p-2">
             <Image
               src="/hero-preview.png"
-              alt="Pipeline commercial de CRMine : progression des contacts par étape du cycle de vie"
+              alt="Pipeline commercial de Pipedrift : progression des contacts par étape du cycle de vie"
               width={1907}
               height={911}
               priority
@@ -103,7 +103,7 @@ function LogoCloud() {
   const track = [...logos, ...logos];
 
   return (
-    <section className="bg-canvas py-20">
+    <section className="border-y border-border bg-canvas py-12">
       <div className="mx-auto max-w-[1200px] px-6">
         <p className="text-center text-sm text-ink-3">
           Plus de 200 entreprises démarchent leurs prospect avec CRMine
@@ -152,32 +152,32 @@ function PositioningBand() {
 function Modules() {
   const modules = [
     {
-      icon: Upload,
+      icon: Users,
       title: "Import",
       desc: "Importez votre base de contacts en CSV ou Excel ou ajouter les manuellement.",
     },
     {
-      icon: Target,
+      icon: Building2,
       title: "Organisation",
       desc: "Organisez vos contacts pour cibler les bonnes personnes avec les bons messages.",
     },
     {
-      icon: MessageSquare,
+      icon: GitBranch,
       title: "Campagnes",
       desc: "Créer et programmez vos campagnes SMS, Intégrer des liens vers vos LP pour inciter à l'action.",
     },
     {
-      icon: MousePointerClick,
+      icon: CreditCard,
       title: "Suivi",
       desc: "Identifiez toutes les interactions (visites, clics, conversion) et adapter votre stratégie.",
     },
     {
-      icon: Workflow,
+      icon: BarChart3,
       title: "Automatisation",
       desc: "Déclenchez des séquences de relances automatiquement, et réengager les personnes.",
     },
     {
-      icon: BarChart3,
+      icon: Workflow,
       title: "Analyse",
       desc: "Suivez les résulats de vos campagnes dans un tableau de bord centraliser.",
     },
@@ -205,7 +205,7 @@ function Modules() {
               <div className="flex h-11 w-11 items-center justify-center rounded-md bg-surface text-ink">
                 <m.icon className="h-5 w-5" strokeWidth={1.5} />
               </div>
-              <h3 className="mt-5 text-lg   leading-[0.95] tracking-[-0.03em] text-ink">{m.title}</h3>
+              <h3 className="mt-5 text-lg  leading-[0.95] tracking-[-0.03em] text-ink">{m.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-2">{m.desc}</p>
             </div>
           ))}
@@ -219,43 +219,62 @@ function Modules() {
 /*  Différenciateur — automatisation (séquence réelle → numérotée)     */
 /* ------------------------------------------------------------------ */
 function Workflows() {
+  const points = [
+    "Relances automatiques d'un prospect",
+    "Configuration de la stratégie et des regles marketing",
+    "Facture Stripe générée dès qu'une affaire est gagnée",
+    "Synchronisation en temps réel entre toutes vos équipes",
+  ];
+
+  const steps = [
+    { label: "Affaire gagnée · Acme Corp", icon: Check },
+    { label: "Facture Stripe générée", icon: CreditCard },
+    { label: "Relance planifiée à J+3", icon: Workflow },
+    { label: "Équipe notifiée", icon: Users },
+  ];
+
   return (
     <section id="workflow" className="bg-surface py-24">
       <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-16 px-6 lg:grid-cols-2">
         <div>
-          <h2 className="text-[40px] font-light leading-[0.95] tracking-[-0.03em] text-ink lg:text-[54px]">
+          <h2 className="text-3xl font-light leading-[0.95] tracking-[-0.03em] text-ink sm:text-4xl">
             Laissez le CRM travailler à votre place
           </h2>
-          <p className="mt-5 max-w-md font-serif text-base font-light leading-[1.4] text-ink-2">
+          <p className="mt-4 font-serif text-base font-light leading-[1.4] text-ink-2">
             Réglez vos automatisations une fois, gagnez des heures chaque
             semaine. Vos commerciaux vendent, le CRM s&apos;occupe du reste.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/signup"
-              className="rounded-md bg-action px-6 py-3 text-center font-normal text-on-action transition-colors hover:bg-action-strong"
-            >
-              Essai gratuit
-            </Link>
-            <Link
-              href="/pricing"
-              className="rounded-md border border-ink/20 px-6 py-3 text-center font-normal text-ink transition-colors hover:bg-surface"
-            >
-              Demander une démo
-            </Link>
-          </div>
+          <ul className="mt-8 space-y-4">
+            {points.map((point) => (
+              <li key={point} className="flex items-start gap-3">
+                <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-md bg-accent-soft text-accent">
+                  <Check className="h-3.5 w-3.5" strokeWidth={2} />
+                </span>
+                <span className="text-ink-2">{point}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="overflow-hidden rounded-md border border-border bg-canvas p-2">
-          <Image
-            src="/team-meeting.jpg"
-            alt="Une équipe commerciale en réunion de travail autour d'ordinateurs portables"
-            width={5473}
-            height={3654}
-            loading="lazy"
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="h-auto w-full rounded-sm"
-          />
+        <div className="rounded-md border border-border bg-card p-6">
+          <ol className="space-y-3">
+            {steps.map((step, i) => (
+              <li
+                key={step.label}
+                className="flex items-center gap-4 rounded-md border border-border bg-canvas p-4"
+              >
+                <span className="font-mono text-xs font-normal text-ink-muted">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-md bg-surface text-ink">
+                  <step.icon className="h-4 w-4" strokeWidth={1.5} />
+                </span>
+                <span className="text-sm font-normal text-ink">
+                  {step.label}
+                </span>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>
@@ -276,7 +295,7 @@ function Results() {
   return (
     <section id="clients" className="bg-canvas py-24">
       <div className="mx-auto max-w-[1200px] px-6">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-12 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 border-y border-border py-12 lg:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label}>
               <p className="text-4xl font-medium tracking-tight text-ink sm:text-5xl">
@@ -287,29 +306,25 @@ function Results() {
           ))}
         </div>
 
-        <figure className="mx-auto mt-16 grid max-w-4xl items-center gap-8 sm:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] sm:gap-12">
-          <div className="overflow-hidden rounded-md border border-border bg-surface p-2">
-            <Image
-              src="/ceo-portrait.avif"
-              alt="Portrait de Camille Moreau, CEO de Globex"
-              width={740}
-              height={436}
-              loading="lazy"
-              sizes="(min-width: 640px) 38vw, 100vw"
-              className="h-auto w-full rounded-sm"
-            />
-          </div>
-          <div>
-            <blockquote className="text-2xl font-normal leading-relaxed tracking-tight text-ink sm:text-[1.75rem]">
-              « Nous avons remplacé trois outils par CRMine. Les commerciaux ont
-              enfin une vue claire du pipeline, et la facturation est
-              automatique. Adopté en une semaine. »
-            </blockquote>
-            <figcaption className="mt-6 text-sm">
-              <span className="block font-semibold text-ink">Camille Moreau</span>
-              <span className="block text-ink-3">CEO, Globex</span>
-            </figcaption>
-          </div>
+        <figure className="mx-auto mt-16 max-w-3xl">
+          <blockquote className="text-2xl font-normal leading-relaxed tracking-tight text-ink sm:text-[1.75rem]">
+            « Nous avons remplacé trois outils par Pipedrift. Les commerciaux ont
+            enfin une vue claire du pipeline, et la facturation est automatique.
+            Adopté en une semaine. »
+          </blockquote>
+          <figcaption className="mt-6 flex items-center gap-3">
+            <span className="flex h-11 w-11 items-center justify-center rounded-md bg-accent font-normal text-on-action">
+              CM
+            </span>
+            <span className="text-sm">
+              <span className="block font-semibold text-ink">
+                Camille Moreau
+              </span>
+              <span className="block text-ink-3">
+                Directrice commerciale, Globex
+              </span>
+            </span>
+          </figcaption>
         </figure>
       </div>
     </section>
@@ -403,40 +418,29 @@ function PricingTeaser() {
 function FinalCta() {
   return (
     <section className="bg-ink">
-      <SonarGrid
-        color="#ffffff"
-        baseOpacity={0.22}
-        dotRadius={1.3}
-        spacing={28}
-        ringWidth={80}
-        amplitude={2}
-        pingEvery={4}
-        seedPing
-      >
-        <div className="mx-auto max-w-[1200px] px-6 py-24 text-center">
-          <h2 className="mx-auto max-w-2xl text-3xl font-light leading-[0.95] tracking-[-0.03em] text-on-action sm:text-4xl">
-            Prêt à faire avancer vos ventes ?
-          </h2>
-          <p className="mx-auto mt-5 max-w-xl font-serif text-base font-light leading-[1.4] text-white/70">
-            Lancez votre essai aujourd&apos;hui. Mise en route en quelques
-            minutes, sans carte bancaire.
-          </p>
-          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              href="/signup"
-              className="rounded-md bg-card px-6 py-3 font-normal text-ink transition-colors hover:bg-canvas"
-            >
-              Essai gratuit
-            </Link>
-            <Link
-              href="/pricing"
-              className="rounded-md border border-white/25 px-6 py-3 font-normal text-on-action transition-colors hover:bg-white/10"
-            >
-              Demander une démo
-            </Link>
-          </div>
+      <div className="mx-auto max-w-[1200px] px-6 py-24 text-center">
+        <h2 className="mx-auto max-w-2xl text-3xl font-light leading-[0.95] tracking-[-0.03em] text-on-action sm:text-4xl">
+          Prêt à faire avancer vos ventes ?
+        </h2>
+        <p className="mx-auto mt-5 max-w-xl font-serif text-base font-light leading-[1.4] text-white/70">
+          Lancez votre essai aujourd&apos;hui. Mise en route en quelques minutes,
+          sans carte bancaire.
+        </p>
+        <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Link
+            href="/signup"
+            className="rounded-md bg-card px-6 py-3 font-normal text-ink transition-colors hover:bg-canvas"
+          >
+            Essai gratuit
+          </Link>
+          <Link
+            href="/pricing"
+            className="rounded-md border border-white/25 px-6 py-3 font-normal text-on-action transition-colors hover:bg-white/10"
+          >
+            Demander une démo
+          </Link>
         </div>
-      </SonarGrid>
+      </div>
     </section>
   );
 }
