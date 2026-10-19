@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import type Stripe from "stripe";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 import { prisma } from "@/lib/prisma";
-
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
 // Mappe un statut Stripe vers notre enum Prisma
 function mapStatus(status: Stripe.Subscription.Status) {
@@ -29,9 +27,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Signature manquante" }, { status: 400 });
   }
 
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+  if (!webhookSecret) {
+    throw new Error("STRIPE_WEBHOOK_SECRET est manquante dans l'environnement");
+  }
+
   let event: Stripe.Event;
   try {
-    event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
+    event = getStripe().webhooks.constructEvent(body, signature, webhookSecret);
   } catch (err) {
     console.error("Échec de vérification du webhook Stripe", err);
     return NextResponse.json({ error: "Signature invalide" }, { status: 400 });
