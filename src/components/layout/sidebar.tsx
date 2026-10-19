@@ -7,7 +7,7 @@ const NAV = [
   { href: "/companies", label: "Entreprises", icon: Building2 },
   { href: "/deals", label: "Deals", icon: Handshake },
   { href: "/settings/billing", label: "Paramètres", icon: Settings },
-];
+] as const;
 
 export function Sidebar() {
   return (

@@ -6,12 +6,20 @@ import { prisma } from "@/lib/prisma";
 import { signupSchema } from "@/lib/validations/auth";
 import { slugify } from "@/lib/utils";
 import { signIn } from "@/lib/auth";
+import type { SignupInput } from "@/lib/validations/auth";
+
+export type RegisterActionState = {
+  error?: Partial<Record<keyof SignupInput, string[]>>;
+};
 
 /**
  * Inscription : crée l'utilisateur, son organisation (tenant),
  * son adhésion en tant qu'OWNER, puis le connecte.
  */
-export async function registerAction(formData: FormData) {
+export async function registerAction(
+  _previousState: RegisterActionState,
+  formData: FormData,
+): Promise<RegisterActionState> {
   const parsed = signupSchema.safeParse(Object.fromEntries(formData));
   if (!parsed.success) {
     return { error: parsed.error.flatten().fieldErrors };

@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { href: "#workflow", label: "Automatisation" },
   { href: "#clients", label: "Clients" },
   { href: "/pricing", label: "Tarifs" },
-];
+] as const;
 
 export function Navbar() {
   const [open, setOpen] = useState(false);

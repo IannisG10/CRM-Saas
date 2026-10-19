@@ -37,7 +37,7 @@ const COLUMNS = [
       { href: "/confidentialite", label: "Cookies" },
     ],
   },
-];
+] as const;
 
 export function Footer() {
   return (
