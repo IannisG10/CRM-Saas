@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
@@ -11,7 +11,7 @@ export const billingService = {
     });
     if (existing) return existing.stripeCustomerId;
 
-    const customer = await stripe.customers.create({
+    const customer = await getStripe().customers.create({
       email,
       name,
       metadata: { organizationId },
@@ -26,7 +26,7 @@ export const billingService = {
 
   /** Crée une session Stripe Checkout pour un abonnement. */
   async createCheckoutSession(customerId: string, priceId: string) {
-    return stripe.checkout.sessions.create({
+    return getStripe().checkout.sessions.create({
       customer: customerId,
       mode: "subscription",
       line_items: [{ price: priceId, quantity: 1 }],
@@ -38,7 +38,7 @@ export const billingService = {
 
   /** Crée une session du portail client Stripe (gestion de l'abonnement). */
   async createPortalSession(customerId: string) {
-    return stripe.billingPortal.sessions.create({
+    return getStripe().billingPortal.sessions.create({
       customer: customerId,
       return_url: `${APP_URL}/settings/billing`,
     });
