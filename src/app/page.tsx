@@ -1,14 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
 import {
+  Ban,
   BarChart3,
   Building2,
+  CalendarClock,
   Check,
   Clock,
   CreditCard,
   GitBranch,
+  Server,
   Sparkles,
   Target,
+  UserCheck,
   Users,
   Workflow,
 } from "lucide-react";
@@ -147,7 +151,7 @@ function Modules() {
     {
       icon: Users,
       title: "Import",
-      desc: "Importez votre base de contacts en CSV ou Excel ou ajouter les manuellement.",
+      desc: "Importez votre base de contacts en CSV ou Excel ou ajoutez-les manuellement.",
     },
     {
       icon: Building2,
@@ -157,22 +161,22 @@ function Modules() {
     {
       icon: GitBranch,
       title: "Campagnes",
-      desc: "Créer et programmez vos campagnes SMS, Intégrer des liens vers vos LP pour inciter à l'action.",
+      desc: "Créez et programmez vos campagnes SMS, Intégrez des liens vers vos landing pages pour inciter à l'action.",
     },
     {
       icon: CreditCard,
       title: "Suivi",
-      desc: "Identifiez toutes les interactions (visites, clics, conversion) et adapter votre stratégie.",
+      desc: "Identifiez toutes les interactions (visites, clics, conversion) et adaptez votre stratégie.",
     },
     {
       icon: BarChart3,
       title: "Automatisation",
-      desc: "Déclenchez des séquences de relances automatiquement, et réengager les personnes.",
+      desc: "Déclenchez des séquences de relances automatiquement, et réengagez vos contacts.",
     },
     {
       icon: Workflow,
       title: "Analyse",
-      desc: "Suivez les résulats de vos campagnes dans un tableau de bord centraliser.",
+      desc: "Suivez les résultats de vos campagnes dans un tableau de bord centralisé.",
     },
   ];
 
@@ -214,7 +218,7 @@ function Modules() {
 function Workflows() {
   const points = [
     "Relances automatiques d'un prospect",
-    "Configuration de la stratégie et des regles marketing",
+    "Configuration de la stratégie et des règles marketing",
     "Facture Stripe générée dès qu'une affaire est gagnée",
     "Synchronisation en temps réel entre toutes vos équipes",
   ];
@@ -325,6 +329,166 @@ function AiAutomations() {
                 {f.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-2">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Scoring automatique des leads — étiquette HOT+ et priorité SMS     */
+/* ------------------------------------------------------------------ */
+function LeadScoring() {
+  const points = [
+    "Étiquette « HOT+ » dès qu'un contact clique ou rappelle plusieurs fois",
+    "Priorité d'envoi automatique aux contacts les plus engagés",
+    "Score recalculé en temps réel à chaque nouvelle interaction",
+  ];
+
+  const contacts: {
+    name: string;
+    signal: string;
+    score: string;
+    tone: string;
+  }[] = [
+    {
+      name: "Léa Dubois",
+      signal: "3 clics · 1 appel",
+      score: "HOT+",
+      tone: "bg-accent text-on-action",
+    },
+    {
+      name: "Marc Petit",
+      signal: "2 clics cette semaine",
+      score: "HOT",
+      tone: "bg-accent-soft text-accent",
+    },
+    {
+      name: "Inès Garnier",
+      signal: "1 ouverture",
+      score: "WARM",
+      tone: "bg-surface text-ink-2",
+    },
+    {
+      name: "Paul Morel",
+      signal: "aucune interaction",
+      score: "COLD",
+      tone: "bg-surface text-ink-3",
+    },
+  ];
+
+  return (
+    <section id="scoring" className="bg-canvas py-24">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-16 px-6 lg:grid-cols-2">
+        <div>
+          <span className="inline-flex rounded-md bg-accent-soft px-3 py-1 text-xs font-medium text-accent">
+            Scoring automatique
+          </span>
+          <h2 className="mt-5 text-3xl font-light leading-[0.95] tracking-[-0.03em] text-ink sm:text-4xl">
+            Vos leads les plus chauds, priorisés tout seuls
+          </h2>
+          <p className="mt-4 font-serif text-base font-light leading-[1.4] text-ink-2">
+            Chaque contact est scoré en temps réel selon ses interactions.
+            Dès qu&apos;il clique ou rappelle plusieurs fois, il passe en
+            « HOT+ » et remonte automatiquement en tête de vos campagnes SMS.
+          </p>
+          <ul className="mt-8 space-y-4">
+            {points.map((point) => (
+              <li key={point} className="flex items-start gap-3">
+                <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-md bg-accent-soft text-accent">
+                  <Check className="h-3.5 w-3.5" strokeWidth={2} />
+                </span>
+                <span className="text-ink-2">{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="rounded-md border border-border bg-card p-6">
+          <ul className="space-y-3">
+            {contacts.map((c) => (
+              <li
+                key={c.name}
+                className="flex items-center justify-between gap-4 rounded-md border border-border bg-canvas p-4"
+              >
+                <div>
+                  <p className="text-sm font-medium text-ink">{c.name}</p>
+                  <p className="text-xs text-ink-3">{c.signal}</p>
+                </div>
+                <span
+                  className={`rounded-md px-2.5 py-1 font-mono text-xs font-medium ${c.tone}`}
+                >
+                  {c.score}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Conformité — obligations légales du SMS marketing (CNIL / RGPD)    */
+/* ------------------------------------------------------------------ */
+function Compliance() {
+  const items = [
+    {
+      icon: Ban,
+      title: "STOP automatique",
+      desc: "La mention « STOP » est ajoutée à vos SMS et les désinscriptions sont prises en compte en temps réel : un contact qui répond STOP est exclu de tous vos envois suivants.",
+    },
+    {
+      icon: UserCheck,
+      title: "Consentement (opt-in)",
+      desc: "Recueil et traçabilité du consentement de vos contacts particuliers, conformément au RGPD et aux recommandations de la CNIL.",
+    },
+    {
+      icon: CalendarClock,
+      title: "Plages d'envoi respectées",
+      desc: "Les envois commerciaux sont bloqués le soir, la nuit, le dimanche et les jours fériés, selon les recommandations de la CNIL.",
+    },
+    {
+      icon: Server,
+      title: "Hébergement dans l'UE",
+      desc: "Vos données et celles de vos contacts sont hébergées au sein de l'Union européenne.",
+    },
+  ];
+
+  return (
+    <section id="conformite" className="bg-surface py-24">
+      <div className="mx-auto max-w-[1200px] px-6">
+        <div className="max-w-2xl">
+          <span className="inline-flex rounded-md bg-accent-soft px-3 py-1 text-xs font-medium text-accent">
+            Conformité
+          </span>
+          <h2 className="mt-5 text-3xl font-light leading-[0.95] tracking-[-0.03em] text-ink sm:text-4xl">
+            Un marketing SMS conforme, par défaut
+          </h2>
+          <p className="mt-4 font-serif text-base font-light leading-[1.4] text-ink-2">
+            Les obligations légales du SMS marketing sont gérées pour vous :
+            vous envoyez en toute sérénité, dans les règles.
+          </p>
+        </div>
+
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {items.map((item) => (
+            <div
+              key={item.title}
+              className="rounded-md border border-border bg-card p-7"
+            >
+              <div className="flex h-11 w-11 items-center justify-center rounded-md bg-accent-soft text-accent">
+                <item.icon className="h-5 w-5" strokeWidth={1.5} />
+              </div>
+              <h3 className="mt-5 text-lg leading-[0.95] tracking-[-0.03em] text-ink">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-2">
+                {item.desc}
+              </p>
             </div>
           ))}
         </div>
@@ -556,6 +720,8 @@ export default function LandingPage() {
         <Modules />
         <Workflows />
         <AiAutomations />
+        <LeadScoring />
+        <Compliance />
         <EarlyAdopter />
         <PricingTeaser />
         <FinalCta />
