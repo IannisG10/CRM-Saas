@@ -5,7 +5,7 @@ import { Footer } from "@/components/marketing/footer";
 export const metadata: Metadata = {
   title: "Politique de confidentialité — TextoVibe",
   description:
-    "Comment TextoVibe, service édité par MAD SRL, collecte, utilise et protège vos données personnelles.",
+    "Comment TextoVibe, service édité par MADAFRICA DISTRIBUTION SRL, collecte, utilise et protège vos données personnelles.",
 };
 
 const LAST_UPDATED = "15 octobre 2026";
@@ -27,7 +27,7 @@ export default function PrivacyPolicyPage() {
             Ce document est un modèle à faire relire par un conseil juridique
             avant mise en ligne. Les mentions entre crochets{" "}
             <span className="font-mono">[…]</span> doivent être complétées avec
-            les informations réelles de MAD SRL.
+            les informations réelles de MADAFRICA DISTRIBUTION SRL.
           </div>
 
           <div className="mt-10 space-y-10 text-ink-2">
@@ -37,15 +37,26 @@ export default function PrivacyPolicyPage() {
               </h2>
               <p className="mt-3 leading-relaxed">
                 Le service TextoVibe est édité et fourni par{" "}
-                <strong className="text-ink">MAD SRL</strong>, [forme juridique
-                et capital social], dont le siège social est situé [adresse
-                complète], immatriculée sous le numéro [numéro
-                d&apos;entreprise / RCS] et le numéro de TVA [numéro de TVA].
+                <strong className="text-ink">
+                  MADAFRICA DISTRIBUTION SRL
+                </strong>{" "}
+                (M.A.D), société à responsabilité limitée de droit belge, dont
+                le siège social est situé rue des Deux Églises 38, 1000
+                Bruxelles, Belgique, immatriculée sous le numéro
+                d&apos;entreprise (BCE) 0477.160.915 (RPM Bruxelles), TVA
+                BE0477.160.915.
               </p>
               <p className="mt-3 leading-relaxed">
-                Pour toute question relative à vos données personnelles, vous
-                pouvez contacter MAD SRL à l&apos;adresse [email de contact
-                DPO / confidentialité].
+                Pour toute question relative à vos données personnelles ou pour
+                exercer vos droits, vous pouvez contacter MADAFRICA DISTRIBUTION
+                SRL à l&apos;adresse{" "}
+                <a
+                  href="mailto:contact@madafrica.online"
+                  className="font-medium text-accent underline underline-offset-4"
+                >
+                  contact@madafrica.online
+                </a>
+                .
               </p>
             </section>
 
@@ -97,7 +108,7 @@ export default function PrivacyPolicyPage() {
                 Nous faisons appel à des sous-traitants pour l&apos;hébergement,
                 le paiement (Stripe) et l&apos;envoi d&apos;e-mails. Ces
                 prestataires n&apos;accèdent à vos données que pour exécuter les
-                prestations confiées par MAD SRL. Les données sont hébergées au
+                prestations confiées par MADAFRICA DISTRIBUTION SRL. Les données sont hébergées au
                 sein de l&apos;Union européenne ; tout transfert hors UE est
                 encadré par des garanties appropriées.
               </p>
@@ -142,7 +153,7 @@ export default function PrivacyPolicyPage() {
                 8. Modifications
               </h2>
               <p className="mt-3 leading-relaxed">
-                MAD SRL peut mettre à jour la présente politique. En cas de
+                MADAFRICA DISTRIBUTION SRL peut mettre à jour la présente politique. En cas de
                 modification substantielle, les utilisateurs seront informés par
                 e-mail ou via la plateforme.
               </p>

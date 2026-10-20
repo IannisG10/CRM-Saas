@@ -11,4 +11,4 @@ export const DEMO_URL =
  * À remplacer par votre vraie adresse (ou via NEXT_PUBLIC_CONTACT_EMAIL).
  */
 export const CONTACT_EMAIL =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "contact@textovibe.com";
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "contact@madafrica.online";

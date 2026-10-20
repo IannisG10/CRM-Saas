@@ -79,10 +79,14 @@ export function Footer() {
         <div className="mt-12 space-y-4 border-t border-border pt-8 text-sm text-ink-3">
           <p className="leading-relaxed">
             TextoVibe est édité par{" "}
-            <span className="font-medium text-ink">MAD SRL</span> — [forme
-            juridique], capital [montant] €, siège social [adresse], immatriculée
-            sous le numéro [RCS / numéro d&apos;entreprise]. Directeur de la
-            publication : [nom]. Hébergeur : [hébergeur]. Détail sur la page{" "}
+            <span className="font-medium text-ink">
+              MADAFRICA DISTRIBUTION SRL
+            </span>{" "}
+            (M.A.D), SRL de droit belge, siège social rue des Deux Églises 38,
+            1000 Bruxelles, Belgique — BCE 0477.160.915 (RPM Bruxelles), TVA
+            BE0477.160.915. Responsable de la publication : Domohina
+            Ramandimbinirina. Hébergeur : Scaleway SAS (Paris, France). Détail
+            sur la page{" "}
             <Link
               href="/mentions-legales"
               className="font-medium text-ink underline underline-offset-4"
@@ -93,7 +97,8 @@ export function Footer() {
           </p>
           <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
             <p>
-              © {new Date().getFullYear()} MAD SRL. Tous droits réservés.
+              © {new Date().getFullYear()} MADAFRICA DISTRIBUTION SRL. Tous
+              droits réservés.
             </p>
             <CookiePreferencesButton className="transition-colors hover:text-ink" />
           </div>

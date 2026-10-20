@@ -5,7 +5,7 @@ import { Footer } from "@/components/marketing/footer";
 export const metadata: Metadata = {
   title: "Conditions générales de vente — TextoVibe",
   description:
-    "Conditions générales de vente et d'utilisation du service TextoVibe, édité par MAD SRL.",
+    "Conditions générales de vente et d'utilisation du service TextoVibe, édité par MADAFRICA DISTRIBUTION SRL (M.A.D).",
 };
 
 const LAST_UPDATED = "15 octobre 2026";
@@ -27,18 +27,23 @@ export default function TermsPage() {
             Ce document est un modèle à faire relire par un conseil juridique
             avant mise en ligne. Les mentions entre crochets{" "}
             <span className="font-mono">[…]</span> doivent être complétées avec
-            les informations réelles de MAD SRL.
+            les informations réelles de MADAFRICA DISTRIBUTION SRL.
           </div>
 
           <div className="mt-10 space-y-10 text-ink-2">
             <section>
               <h2 className="text-xl font-semibold text-ink">1. Éditeur</h2>
               <p className="mt-3 leading-relaxed">
-                Le service TextoVibe (ci-après « le Service ») est édité et fourni
-                par <strong className="text-ink">MAD SRL</strong>, [forme
-                juridique et capital social], siège social [adresse complète],
-                immatriculée sous le numéro [numéro d&apos;entreprise / RCS],
-                TVA [numéro de TVA] (ci-après « le Prestataire »).
+                Le service TextoVibe (ci-après « le Service ») est édité et
+                fourni par{" "}
+                <strong className="text-ink">
+                  MADAFRICA DISTRIBUTION SRL
+                </strong>{" "}
+                (M.A.D), société à responsabilité limitée de droit belge, dont
+                le siège social est situé rue des Deux Églises 38, 1000
+                Bruxelles, Belgique, numéro d&apos;entreprise (BCE) 0477.160.915
+                (RPM Bruxelles), TVA BE0477.160.915 (ci-après « le
+                Prestataire »).
               </p>
             </section>
 

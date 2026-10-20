@@ -557,7 +557,7 @@ function EarlyAdopter() {
               <span className="block font-semibold text-ink">
                 L&apos;équipe TextoVibe
               </span>
-              <span className="block text-ink-3">MAD SRL</span>
+              <span className="block text-ink-3">MADAFRICA DISTRIBUTION SRL</span>
             </span>
           </figcaption>
         </figure>
