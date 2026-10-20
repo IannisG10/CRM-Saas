@@ -3,9 +3,9 @@ import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 
 export const metadata: Metadata = {
-  title: "Conditions générales de vente — CRMine",
+  title: "Conditions générales de vente — TextoVibe",
   description:
-    "Conditions générales de vente et d'utilisation du service CRMine, édité par MAD SRL.",
+    "Conditions générales de vente et d'utilisation du service TextoVibe, édité par MAD SRL.",
 };
 
 const LAST_UPDATED = "15 octobre 2026";
@@ -34,7 +34,7 @@ export default function TermsPage() {
             <section>
               <h2 className="text-xl font-semibold text-ink">1. Éditeur</h2>
               <p className="mt-3 leading-relaxed">
-                Le service CRMine (ci-après « le Service ») est édité et fourni
+                Le service TextoVibe (ci-après « le Service ») est édité et fourni
                 par <strong className="text-ink">MAD SRL</strong>, [forme
                 juridique et capital social], siège social [adresse complète],
                 immatriculée sous le numéro [numéro d&apos;entreprise / RCS],

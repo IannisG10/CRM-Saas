@@ -47,10 +47,10 @@ export function Footer() {
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2 text-ink">
               <span className="flex h-7 w-7 items-center justify-center rounded-md bg-ink text-[13px] font-semibold text-on-action">
-                C
+                T
               </span>
               <span className="text-lg font-semibold tracking-tight">
-                CRMine
+                TextoVibe
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-3">
@@ -79,7 +79,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-sm text-ink-3 sm:flex-row">
-          <p>© {new Date().getFullYear()} CRMine. Tous droits réservés.</p>
+          <p>© {new Date().getFullYear()} TextoVibe. Tous droits réservés.</p>
           <p>Powered by <span className="font-medium text-ink">MAD SRL</span></p>
         </div>
       </div>

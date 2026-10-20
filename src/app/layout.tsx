@@ -24,7 +24,7 @@ const sourceSerif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "CRMine — Le CRM qui fait avancer vos ventes",
+  title: "TextoVibe — Le CRM qui fait avancer vos ventes",
   description:
     "Centralisez contacts, entreprises et pipelines. Facturation Stripe intégrée, multi-équipes et automatisations, sur une seule plateforme.",
 };

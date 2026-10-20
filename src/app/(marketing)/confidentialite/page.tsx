@@ -3,9 +3,9 @@ import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 
 export const metadata: Metadata = {
-  title: "Politique de confidentialité — CRMine",
+  title: "Politique de confidentialité — TextoVibe",
   description:
-    "Comment CRMine, service édité par MAD SRL, collecte, utilise et protège vos données personnelles.",
+    "Comment TextoVibe, service édité par MAD SRL, collecte, utilise et protège vos données personnelles.",
 };
 
 const LAST_UPDATED = "15 octobre 2026";
@@ -36,7 +36,7 @@ export default function PrivacyPolicyPage() {
                 1. Responsable du traitement
               </h2>
               <p className="mt-3 leading-relaxed">
-                Le service CRMine est édité et fourni par{" "}
+                Le service TextoVibe est édité et fourni par{" "}
                 <strong className="text-ink">MAD SRL</strong>, [forme juridique
                 et capital social], dont le siège social est situé [adresse
                 complète], immatriculée sous le numéro [numéro
@@ -130,7 +130,7 @@ export default function PrivacyPolicyPage() {
             <section>
               <h2 className="text-xl font-semibold text-ink">7. Cookies</h2>
               <p className="mt-3 leading-relaxed">
-                CRMine utilise des cookies strictement nécessaires au
+                TextoVibe utilise des cookies strictement nécessaires au
                 fonctionnement du service (authentification, sécurité). Les
                 éventuels cookies de mesure d&apos;audience ne sont déposés
                 qu&apos;avec votre consentement.

@@ -20,9 +20,9 @@ export function Navbar() {
       <nav className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-2 text-ink">
           <span className="flex h-7 w-7 items-center justify-center rounded-md bg-ink text-[13px] font-semibold text-on-action">
-            C
+            T
           </span>
-          <span className="text-lg font-semibold tracking-tight">CRMine</span>
+          <span className="text-lg font-semibold tracking-tight">TextoVibe</span>
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">

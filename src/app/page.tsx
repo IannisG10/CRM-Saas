@@ -71,7 +71,7 @@ function Hero() {
           <div className="overflow-hidden rounded-md border border-border bg-surface p-2">
             <Image
               src="/hero-preview.png"
-              alt="Pipeline commercial de Pipedrift : progression des contacts par étape du cycle de vie"
+              alt="Pipeline commercial de TextoVibe : progression des contacts par étape du cycle de vie"
               width={1907}
               height={911}
               priority
@@ -87,39 +87,26 @@ function Hero() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Preuve sociale — marquee de wordmarks en grayscale (CSS pur)       */
+/*  Bandeau de lancement — honnête, sans faux clients ni faux chiffres */
 /* ------------------------------------------------------------------ */
-function LogoCloud() {
-  const logos = [
-    "Acme",
-    "Globex",
-    "Initech",
-    "Umbrella",
-    "Stark",
-    "Wayne",
-    "Soylent",
-    "Hooli",
-  ];
-  const track = [...logos, ...logos];
-
+function LaunchStrip() {
   return (
-    <section className="border-y border-border bg-canvas py-12">
-      <div className="mx-auto max-w-[1200px] px-6">
-        <p className="text-center text-sm text-ink-3">
-          Plus de 200 entreprises démarchent leurs prospect avec CRMine
+    <section className="border-y border-border bg-canvas py-14">
+      <div className="mx-auto max-w-2xl px-6 text-center">
+        <p className="text-xs font-medium uppercase tracking-[0.18em] text-ink-3">
+          Tout juste lancé
         </p>
-        <div className="marquee-mask mt-8 overflow-hidden">
-          <div className="marquee-track flex w-max items-center gap-16 pr-16">
-            {track.map((logo, i) => (
-              <span
-                key={`${logo}-${i}`}
-                className="text-xl font-semibold tracking-tight text-logo"
-                aria-hidden={i >= logos.length}
-              >
-                {logo}
-              </span>
-            ))}
-          </div>
+        <p className="mt-4 text-balance text-lg font-light leading-snug text-ink-2">
+          TextoVibe démarre avec ses toutes premières équipes. Rejoignez-les dès
+          maintenant et aidez-nous à façonner le produit.
+        </p>
+        <div className="mt-6">
+          <Link
+            href="/signup"
+            className="inline-flex rounded-md border border-ink/20 px-5 py-2.5 text-sm font-normal text-ink transition-colors hover:bg-surface"
+          >
+            Devenir early adopter
+          </Link>
         </div>
       </div>
     </section>
@@ -227,7 +214,7 @@ function Workflows() {
   ];
 
   const steps = [
-    { label: "Affaire gagnée · Acme Corp", icon: Check },
+    { label: "Affaire gagnée · exemple", icon: Check },
     { label: "Facture Stripe générée", icon: CreditCard },
     { label: "Relance planifiée à J+3", icon: Workflow },
     { label: "Équipe notifiée", icon: Users },
@@ -282,47 +269,66 @@ function Workflows() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Résultats chiffrés + témoignage                                    */
+/*  Offre early adopter + note de l'équipe (remplace faux chiffres)    */
 /* ------------------------------------------------------------------ */
-function Results() {
-  const stats = [
-    { value: "+38 %", label: "de taux de conversion en moyenne" },
-    { value: "6 h", label: "gagnées par commercial chaque semaine" },
-    { value: "2 000+", label: "équipes nous font confiance" },
-    { value: "99,9 %", label: "de disponibilité garantie" },
+function EarlyAdopter() {
+  const perks = [
+    "Tarif de lancement conservé à vie",
+    "Accès direct à l'équipe et à la roadmap",
+    "Sans engagement, annulable à tout moment",
   ];
 
   return (
     <section id="clients" className="bg-canvas py-24">
-      <div className="mx-auto max-w-[1200px] px-6">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-10 border-y border-border py-12 lg:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.label}>
-              <p className="text-4xl font-medium tracking-tight text-ink sm:text-5xl">
-                {s.value}
-              </p>
-              <p className="mt-2 text-sm text-ink-2">{s.label}</p>
-            </div>
-          ))}
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-16 px-6 lg:grid-cols-2">
+        <div>
+          <span className="inline-flex rounded-md bg-accent-soft px-3 py-1 text-xs font-medium text-accent">
+            Offre early adopter
+          </span>
+          <h2 className="mt-5 text-3xl font-light leading-[0.95] tracking-[-0.03em] text-ink sm:text-4xl">
+            Construisez TextoVibe avec nous
+          </h2>
+          <p className="mt-4 font-serif text-base font-light leading-[1.4] text-ink-2">
+            Nous venons de lancer. En rejoignant les premières équipes, vous
+            bénéficiez d&apos;un tarif de lancement et pesez directement sur ce
+            que nous construisons ensuite.
+          </p>
+          <ul className="mt-8 space-y-4">
+            {perks.map((perk) => (
+              <li key={perk} className="flex items-start gap-3">
+                <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-md bg-accent-soft text-accent">
+                  <Check className="h-3.5 w-3.5" strokeWidth={2} />
+                </span>
+                <span className="text-ink-2">{perk}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8">
+            <Link
+              href="/signup"
+              className="inline-flex rounded-md bg-action px-6 py-3 font-normal text-on-action transition-colors hover:bg-action-strong"
+            >
+              Rejoindre les early adopters
+            </Link>
+          </div>
         </div>
 
-        <figure className="mx-auto mt-16 max-w-3xl">
-          <blockquote className="text-2xl font-normal leading-relaxed tracking-tight text-ink sm:text-[1.75rem]">
-            « Nous avons remplacé trois outils par Pipedrift. Les commerciaux ont
-            enfin une vue claire du pipeline, et la facturation est automatique.
-            Adopté en une semaine. »
+        <figure className="rounded-md border border-border bg-card p-8">
+          <blockquote className="text-xl font-light leading-relaxed tracking-tight text-ink sm:text-2xl">
+            « TextoVibe en est à ses débuts. Plutôt que d&apos;afficher des
+            chiffres que nous n&apos;avons pas encore, nous préférons être
+            honnêtes : rejoignez-nous tôt, et construisons ensemble un CRM dont
+            les résultats parleront d&apos;eux-mêmes. »
           </blockquote>
           <figcaption className="mt-6 flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-md bg-accent font-normal text-on-action">
-              CM
+            <span className="flex h-11 w-11 items-center justify-center rounded-md bg-ink font-normal text-on-action">
+              T
             </span>
             <span className="text-sm">
               <span className="block font-semibold text-ink">
-                Camille Moreau
+                L&apos;équipe TextoVibe
               </span>
-              <span className="block text-ink-3">
-                Directrice commerciale, Globex
-              </span>
+              <span className="block text-ink-3">MAD SRL</span>
             </span>
           </figcaption>
         </figure>
@@ -454,11 +460,11 @@ export default function LandingPage() {
       <Navbar />
       <main>
         <Hero />
-        <LogoCloud />
+        <LaunchStrip />
         <PositioningBand />
         <Modules />
         <Workflows />
-        <Results />
+        <EarlyAdopter />
         <PricingTeaser />
         <FinalCta />
       </main>
