@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { CookiePreferencesButton } from "@/components/cookie-preferences-button";
+import { CONTACT_EMAIL } from "@/config/site";
 
 const COLUMNS = [
   {
@@ -6,35 +8,21 @@ const COLUMNS = [
     links: [
       { href: "#modules", label: "Modules" },
       { href: "#workflow", label: "Automatisation" },
+      { href: "#ia", label: "Automatisations IA" },
       { href: "/pricing", label: "Tarifs" },
-      { href: "#clients", label: "Études de cas" },
     ],
   },
   {
-    title: "Entreprise",
-    links: [
-      { href: "#", label: "À propos" },
-      { href: "#", label: "Blog" },
-      { href: "#", label: "Carrières" },
-      { href: "#", label: "Contact" },
-    ],
-  },
-  {
-    title: "Ressources",
-    links: [
-      { href: "#", label: "Documentation" },
-      { href: "#", label: "Centre d'aide" },
-      { href: "#", label: "API" },
-      { href: "#", label: "Statut" },
-    ],
+    title: "Contact",
+    links: [{ href: `mailto:${CONTACT_EMAIL}`, label: CONTACT_EMAIL }],
   },
   {
     title: "Légal",
     links: [
+      { href: "/mentions-legales", label: "Mentions légales" },
       { href: "/confidentialite", label: "Confidentialité" },
       { href: "/cgv", label: "Conditions" },
-      { href: "/confidentialite", label: "RGPD" },
-      { href: "/confidentialite", label: "Cookies" },
+      { href: "/cookies", label: "Cookies" },
     ],
   },
 ] as const;
@@ -54,8 +42,9 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-3">
-              Le CRM qui fait avancer vos ventes. Contacts, pipelines et
-              facturation, réunis sur une seule plateforme.
+              Le CRM qui transforme vos fichiers de contacts en ventes.
+              Campagnes SMS, relances automatiques et suivi des conversions,
+              réunis sur une seule plateforme.
             </p>
           </div>
 
@@ -65,12 +54,21 @@ export function Footer() {
               <ul className="mt-4 space-y-3">
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-ink-3 transition-colors hover:text-ink"
-                    >
-                      {link.label}
-                    </Link>
+                    {link.href.startsWith("mailto:") ? (
+                      <a
+                        href={link.href}
+                        className="text-sm text-ink-3 transition-colors hover:text-ink"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-sm text-ink-3 transition-colors hover:text-ink"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -78,9 +76,27 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-sm text-ink-3 sm:flex-row">
-          <p>© {new Date().getFullYear()} TextoVibe. Tous droits réservés.</p>
-          <p>Powered by <span className="font-medium text-ink">MAD SRL</span></p>
+        <div className="mt-12 space-y-4 border-t border-border pt-8 text-sm text-ink-3">
+          <p className="leading-relaxed">
+            TextoVibe est édité par{" "}
+            <span className="font-medium text-ink">MAD SRL</span> — [forme
+            juridique], capital [montant] €, siège social [adresse], immatriculée
+            sous le numéro [RCS / numéro d&apos;entreprise]. Directeur de la
+            publication : [nom]. Hébergeur : [hébergeur]. Détail sur la page{" "}
+            <Link
+              href="/mentions-legales"
+              className="font-medium text-ink underline underline-offset-4"
+            >
+              Mentions légales
+            </Link>
+            .
+          </p>
+          <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
+            <p>
+              © {new Date().getFullYear()} MAD SRL. Tous droits réservés.
+            </p>
+            <CookiePreferencesButton className="transition-colors hover:text-ink" />
+          </div>
         </div>
       </div>
     </footer>

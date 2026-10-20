@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
+import { CookieConsent } from "@/components/cookie-consent";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,9 +25,9 @@ const sourceSerif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "TextoVibe — Le CRM qui fait avancer vos ventes",
+  title: "TextoVibe — Le CRM qui transforme vos contacts en ventes par SMS",
   description:
-    "Centralisez contacts, entreprises et pipelines. Facturation Stripe intégrée, multi-équipes et automatisations, sur une seule plateforme.",
+    "Importez vos fichiers de contacts, lancez vos campagnes SMS et automatisez vos relances. TextoVibe, le CRM qui transforme vos contacts en ventes par SMS.",
 };
 
 export default function RootLayout({
@@ -37,7 +38,10 @@ export default function RootLayout({
       lang="fr"
       className={`${inter.variable} ${ibmPlexMono.variable} ${sourceSerif.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <CookieConsent />
+      </body>
     </html>
   );
 }

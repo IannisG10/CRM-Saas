@@ -4,12 +4,16 @@ import {
   BarChart3,
   Building2,
   Check,
+  Clock,
   CreditCard,
   GitBranch,
+  Sparkles,
+  Target,
   Users,
   Workflow,
 } from "lucide-react";
-import { PLANS } from "@/config/plans";
+import { PLANS, SMS_INFO, formatSmsOverage } from "@/config/plans";
+import { DEMO_URL } from "@/config/site";
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { HeroBadge } from "@/components/marketing/hero-badge";
@@ -36,8 +40,8 @@ function Hero() {
         <div className="animate-fade-up">
           <HeroBadge label="Nouveau · automatisations IA" />
 
-          <h1 className="mt-6 max-w-[12ch] text-[40px] font-light leading-[0.90] tracking-[-0.03em] text-[#111111] md:text-[54px] lg:text-[78px]">
-            Transformer des contacts en opportunités.
+          <h1 className="mt-6 max-w-[18ch] text-[34px] font-light leading-[0.98] tracking-[-0.03em] text-[#111111] md:text-[46px] lg:text-[60px]">
+            Le CRM qui transforme vos fichiers de contacts en ventes, par SMS.
           </h1>
 
           <p className="mt-6 max-w-xl font-serif text-base font-light leading-[1.4] text-ink-2">
@@ -54,16 +58,18 @@ function Hero() {
             >
               Essai gratuit
             </Link>
-            <Link
-              href="/pricing"
+            <a
+              href={DEMO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-md border border-ink/20 px-6 py-3 text-center font-normal text-ink transition-colors hover:bg-surface"
             >
               Demander une démo
-            </Link>
+            </a>
           </div>
 
           <p className="mt-5 text-sm text-ink-3">
-            Import CSV · Campagne SMS · annulable à tout moment
+            Sans carte bancaire · Mise en route en 5 min · Sans engagement
           </p>
         </div>
 
@@ -269,6 +275,65 @@ function Workflows() {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Automatisations IA — explique le badge du hero                     */
+/* ------------------------------------------------------------------ */
+function AiAutomations() {
+  const features = [
+    {
+      icon: Sparkles,
+      title: "Rédaction des SMS",
+      desc: "L'IA rédige et optimise vos messages — accroche, appel à l'action, longueur — à partir de votre objectif et de votre audience.",
+    },
+    {
+      icon: Clock,
+      title: "Meilleur moment d'envoi",
+      desc: "Chaque SMS part à l'heure où le contact est le plus susceptible d'ouvrir et de cliquer, d'après son historique d'engagement.",
+    },
+    {
+      icon: Target,
+      title: "Scoring des leads",
+      desc: "Vos contacts sont classés par probabilité de conversion pour concentrer vos relances sur les prospects les plus chauds.",
+    },
+  ];
+
+  return (
+    <section id="ia" className="bg-canvas py-24">
+      <div className="mx-auto max-w-[1200px] px-6">
+        <div className="max-w-2xl">
+          <span className="inline-flex rounded-md bg-accent-soft px-3 py-1 text-xs font-medium text-accent">
+            Automatisations IA
+          </span>
+          <h2 className="mt-5 text-3xl font-light leading-[0.95] tracking-[-0.03em] text-ink sm:text-4xl">
+            L&apos;IA qui fait vendre vos SMS
+          </h2>
+          <p className="mt-4 font-serif text-base font-light leading-[1.4] text-ink-2">
+            Trois automatisations intelligentes pour écrire de meilleurs
+            messages, les envoyer au bon moment et prioriser les bons contacts.
+          </p>
+        </div>
+
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          {features.map((f) => (
+            <div
+              key={f.title}
+              className="rounded-md border border-border bg-card p-7"
+            >
+              <div className="flex h-11 w-11 items-center justify-center rounded-md bg-accent-soft text-accent">
+                <f.icon className="h-5 w-5" strokeWidth={1.5} />
+              </div>
+              <h3 className="mt-5 text-lg leading-[0.95] tracking-[-0.03em] text-ink">
+                {f.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-2">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /*  Offre early adopter + note de l'équipe (remplace faux chiffres)    */
 /* ------------------------------------------------------------------ */
 function EarlyAdopter() {
@@ -378,6 +443,15 @@ function PricingTeaser() {
                     /mois
                   </span>
                 </p>
+                <div className="mb-6 rounded-md bg-surface p-4">
+                  <p className="text-sm font-medium text-ink">
+                    {plan.smsIncluded.toLocaleString("fr-FR")} SMS/mois inclus
+                  </p>
+                  <p className="mt-1 text-xs text-ink-3">
+                    SMS supplémentaire : {formatSmsOverage(plan.smsOverage)} ·{" "}
+                    {plan.sender}
+                  </p>
+                </div>
                 <ul className="mb-8 flex-1 space-y-3 text-sm text-ink-2">
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-start gap-2">
@@ -389,22 +463,37 @@ function PricingTeaser() {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href="/signup"
-                  className={
-                    featured
-                      ? "rounded-md bg-action px-4 py-2.5 text-center text-sm font-normal text-on-action transition-colors hover:bg-action-strong"
-                      : "rounded-md border border-ink/20 px-4 py-2.5 text-center text-sm font-normal text-ink transition-colors hover:bg-surface"
-                  }
-                >
-                  Essai gratuit
-                </Link>
+                {plan.id === "enterprise" ? (
+                  <a
+                    href={DEMO_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-md border border-ink/20 px-4 py-2.5 text-center text-sm font-normal text-ink transition-colors hover:bg-surface"
+                  >
+                    Nous contacter
+                  </a>
+                ) : (
+                  <Link
+                    href="/signup"
+                    className={
+                      featured
+                        ? "rounded-md bg-action px-4 py-2.5 text-center text-sm font-normal text-on-action transition-colors hover:bg-action-strong"
+                        : "rounded-md border border-ink/20 px-4 py-2.5 text-center text-sm font-normal text-ink transition-colors hover:bg-surface"
+                    }
+                  >
+                    Essai gratuit
+                  </Link>
+                )}
               </div>
             );
           })}
         </div>
 
-        <p className="mt-10 text-sm text-ink-3">
+        <p className="mt-8 text-sm text-ink-3">
+          {SMS_INFO.topUp} {SMS_INFO.countries}
+        </p>
+
+        <p className="mt-4 text-sm text-ink-3">
           Besoin d&apos;un plan sur mesure ?{" "}
           <Link
             href="/pricing"
@@ -439,12 +528,14 @@ function FinalCta() {
           >
             Essai gratuit
           </Link>
-          <Link
-            href="/pricing"
+          <a
+            href={DEMO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-md border border-white/25 px-6 py-3 font-normal text-on-action transition-colors hover:bg-white/10"
           >
             Demander une démo
-          </Link>
+          </a>
         </div>
       </div>
     </section>
@@ -464,6 +555,7 @@ export default function LandingPage() {
         <PositioningBand />
         <Modules />
         <Workflows />
+        <AiAutomations />
         <EarlyAdopter />
         <PricingTeaser />
         <FinalCta />
